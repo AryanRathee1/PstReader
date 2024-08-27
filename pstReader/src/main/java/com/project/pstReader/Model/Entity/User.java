@@ -40,6 +40,9 @@ public class User implements UserDetails {
     private Integer managerId;
     ///////////////////////////////
 
+    @OneToMany(mappedBy = "user")
+    private List<PstAccessTable> pstAccessTables;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
