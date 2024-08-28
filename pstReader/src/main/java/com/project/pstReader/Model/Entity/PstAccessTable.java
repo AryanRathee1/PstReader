@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Embeddable
 public class PstAccessTable {
 
     @EmbeddedId

@@ -20,6 +20,7 @@ public class PstFile {
     @SequenceGenerator(name= "users_sequence",allocationSize = 1)
     private Integer pstId;
 
+    @Column(nullable = false)
     private Integer uploadedBy;
     private Integer managerId;
 
