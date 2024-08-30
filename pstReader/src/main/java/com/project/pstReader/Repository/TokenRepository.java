@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface TokenRepository extends JpaRepository<Token, Integer> {
 
     @Query("""
-            Select t from Token t inner join User u on t.user.serialNo = u.serialNo
+            Select t from Token t inner join User u on t.user.userId = u.userId
             where u.userId = :userId and (t.expired = false or t.revoked = false)
     """)
     List<Token> findAllValidTokenByUser(@Param("userId") Integer userId);

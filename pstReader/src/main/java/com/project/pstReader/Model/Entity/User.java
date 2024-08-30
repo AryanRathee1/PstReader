@@ -22,12 +22,13 @@ import java.util.List;
 )
 public class User implements UserDetails {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name= "users_sequence",allocationSize = 1)
-    private Integer serialNo;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @SequenceGenerator(name= "users_sequence",allocationSize = 1)
+//    private Integer serialNo;
 
-    @Column(nullable = false, updatable = false)
+    @Id
+    @Column(nullable = false, updatable = false, unique = true)
     private Integer userId;
 
     @Column(unique = true)

@@ -13,14 +13,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@IdClass(PstAccessTableId.class)
 public class PstAccessTable {
 
-    @EmbeddedId
-    private PstAccessTableId pstAccessTableId;
+    @Id
+    private Integer userId;
+
+    @Id
+    private Integer pstId;
 
     @MapsId(value = "userId")
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",referencedColumnName = "userId")
     private User user;
 
     @MapsId(value = "pstId")
@@ -29,7 +33,7 @@ public class PstAccessTable {
     private PstFile pstFile;
 
     @Enumerated(EnumType.STRING)
-    private AccessType accessType;
+    private AccessStatus accessStatus;
 
     private LocalDateTime accessStartTime;
     private LocalDateTime accessEndTime;    //  null if accessType is Permanent
