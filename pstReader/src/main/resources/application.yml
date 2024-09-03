@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     database: postgresql
     show-sql: true
     properties:
@@ -20,7 +20,18 @@ spring:
   servlet:
     multipart:
       enabled: true
-      max-file-size: 50MB
-      max-request-size: 50MB
+      max-file-size: 2GB
+      max-request-size: 2GB
 
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200  # Default URI for Elasticsearch
+    username: elastic  # Elasticsearch username if authentication is enabled
+    password: elastic  # Elasticsearch password if authentication is enabled
 
+  data:
+    cluster-names: elasticsearch
+    node: localhost:9200
+    elasticsearch:
+      repositories:
+        enabled: true

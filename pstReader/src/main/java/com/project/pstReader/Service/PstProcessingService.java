@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -20,8 +21,9 @@ public class PstProcessingService {
     private final PstFileRepository pstFileRepository;
     private final PstAccessTableRepository pstAccessTableRepository;
     private final UserRepository userRepository;
+    private final PstExtractionService pstExtractionService;
 
-    public void extractFromPstFile(MultipartFile file, Principal connectedUser) {
+    public void extractFromPstFile(File file, Principal connectedUser) {
 
         User user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
         var manager = userRepository.findByUserId(user.getManagerId());
@@ -32,7 +34,7 @@ public class PstProcessingService {
         updatePstAccessTable(pstFileVar, Optional.of(user));
         updatePstAccessTable(pstFileVar, manager);
 
-        extractDataFromPstFile(file);
+        pstExtractionService.extractDataFromPstFile(file);
     }
 
     private void extractDataFromPstFile(MultipartFile file) {

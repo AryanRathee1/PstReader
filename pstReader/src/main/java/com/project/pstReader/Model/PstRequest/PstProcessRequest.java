@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,4 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class PstProcessRequest {
     //private String token;
     private MultipartFile pstFile;
+//    private File pstFile;
+
 }
