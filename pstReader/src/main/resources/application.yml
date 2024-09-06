@@ -1,10 +1,10 @@
-spring:
+aspring:
   application:
     name: pstReader
 
   datasource:
     url: jdbc:postgresql://localhost:5432/pstReader
-    username: postgres
+    username: username
     password: password
     driver-class-name: org.postgresql.Driver
 
@@ -26,8 +26,8 @@ spring:
   elasticsearch:
     rest:
       uris: http://localhost:9200  # Default URI for Elasticsearch
-    username: elastic  # Elasticsearch username if authentication is enabled
-    password: elastic  # Elasticsearch password if authentication is enabled
+    username: username  # Elasticsearch username if authentication is enabled
+    password: password  # Elasticsearch password if authentication is enabled
 
   data:
     cluster-names: elasticsearch
